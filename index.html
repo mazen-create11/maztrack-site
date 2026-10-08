@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maztrack — AI-Powered B2B Intelligence & Precision Outreach</title>
+  <meta name="description" content="Autonomous B2B lead sourcing, intelligent scoring, and contextual cold email generation powered by Claude 3.5 Sonnet.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Background Glow & Grid -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <span class="brand-badge"></span>
+        MAZ<span>TRACK</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Platform</a>
+        <a href="#architecture">AI Architecture</a>
+        <a href="#demo">Interactive Cockpit</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="#early-access" class="btn btn-outline">Sign In</a>
+        <a href="#early-access" class="btn btn-primary">Join Beta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="pill-badge">
+          <span class="pill-dot"></span>
+          <span>Powered by Claude 3.5 Sonnet AI Engine</span>
+        </div>
+
+        <h1 class="hero-title">
+          Autonomous B2B Sourcing & <br>
+          <span class="gradient-text">Precision Outreach at Scale</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Turn public registry signals, recruitment shifts, and commercial velocity into qualified B2B deals. 
+          Maztrack analyzes market signals and generates hyper-personalized outreach emails that convert.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#early-access" class="btn btn-primary btn-large">Get Started Free</a>
+          <a href="#demo" class="btn btn-secondary btn-large">View Live Demo ↓</a>
+        </div>
+
+        <!-- Trust & Stats -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">10x</span>
+            <span class="stat-label">Faster Lead Sourcing</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">84%</span>
+            <span class="stat-label">Higher Open & Reply Rate</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">GDPR & Privacy Compliant</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">0 €</span>
+            <span class="stat-label">Data Lock-in / Local-First</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cockpit Interactive Mockup Section -->
+    <section class="demo-section" id="demo">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">The Operator's Cockpit</h2>
+          <p class="section-desc">Real-time pipeline monitoring, algorithmic scoring, and instant contextual drafting.</p>
+        </div>
+
+        <div class="cockpit-window">
+          <div class="window-topbar">
+            <div class="window-buttons">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="window-title">maztrack-engine :: status: operational — 128 active leads</div>
+            <div class="window-badge">Claude 3.5 Connected</div>
+          </div>
+
+          <div class="cockpit-body">
+            <!-- Left panel: Live Sourced Leads -->
+            <div class="cockpit-sidebar">
+              <div class="sidebar-header">
+                <span>RECENT DISCOVERIES</span>
+                <span class="tag-live">LIVE</span>
+              </div>
+              <div class="lead-item active">
+                <div class="lead-info">
+                  <strong>PROVENCAO SAS</strong>
+                  <small>Marseille · Cosmetics & Fragrances</small>
+                </div>
+                <div class="lead-score score-high">94</div>
+              </div>
+              <div class="lead-item">
+                <div class="lead-info">
+                  <strong>AURA STUDIO</strong>
+                  <small>Aix-en-Provence · Digital Studio</small>
+                </div>
+                <div class="lead-score score-high">91</div>
+              </div>
+              <div class="lead-item">
+                <div class="lead-info">
+                  <strong>CENTRAL RESTO GROUP</strong>
+                  <small>Toulon · Hospitality & Retail</small>
+                </div>
+                <div class="lead-score score-med">78</div>
+              </div>
+              <div class="lead-item">
+                <div class="lead-info">
+                  <strong>SOLIRA INNOVATION</strong>
+                  <small>Nice · CleanTech</small>
+                </div>
+                <div class="lead-score score-med">74</div>
+              </div>
+            </div>
+
+            <!-- Main preview panel: Claude Synthesis -->
+            <div class="cockpit-main">
+              <div class="lead-card-header">
+                <div>
+                  <h3 class="lead-name">PROVENCAO SAS</h3>
+                  <div class="meta-row">
+                    <span class="badge">NAF 96.02A</span>
+                    <span class="badge">Dept 13 (Marseille)</span>
+                    <span class="badge badge-green">3 Hiring Signals Detected</span>
+                  </div>
+                </div>
+                <button class="btn btn-sm btn-outline">Run Deep Scan</button>
+              </div>
+
+              <div class="analysis-box">
+                <div class="analysis-label">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                  </svg>
+                  Claude 3.5 Sonnet Analysis & Context Synthesis
+                </div>
+                <p class="analysis-text">
+                  "Target company has registered a 24% revenue surge, renewed active job postings on France Travail for e-commerce managers, and migrated to a headless Shopify storefront. High probability need for automated CRM and localized B2B distribution."
+                </p>
+              </div>
+
+              <div class="generated-email-box">
+                <div class="email-box-header">
+                  <span>AI-GENERATED CONTEXTUAL OUTREACH</span>
+                  <span class="mono-tag">MODEL: CLAUDE-3-5-SONNET</span>
+                </div>
+                <div class="email-content">
+                  <p><strong>Subject:</strong> Accélération e-commerce & distribution Provence pour Provencao</p>
+                  <p>Bonjour Mouhanad,</p>
+                  <p>J'ai remarqué le développement récent de votre gamme de muscs et savons à Marseille, ainsi que vos recrutements actifs en acquisition.</p>
+                  <p>Avec l'expansion de votre catalogue (50+ références), plusieurs marques similaires réduisent de 40% leur friction logistique en automatisant la qualification de leurs revendeurs B2B régionaux.</p>
+                  <p>Seriez-vous ouvert à échanger 10 minutes mardi prochain sur les résultats constatés sur ce type de déploiement ?</p>
+                </div>
+                <div class="email-actions">
+                  <button class="btn btn-sm btn-primary">Dispatch via SMTP</button>
+                  <button class="btn btn-sm btn-secondary">Regenerate Angle</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Features Grid -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Built for Modern AI-First Sales Teams</h2>
+          <p class="section-desc">Every layer designed for precision, sovereignty, and unprecedented conversion rates.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3 class="feature-heading">Autonomous Public Registry Sourcing</h3>
+            <p class="feature-text">
+              Direct ingestion from national enterprise databases and open registries. Filter by NAF code, revenue bracket, employee count, and geographic coordinates with sub-second queries.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3 class="feature-heading">Claude 3.5 Deep Context Reasoning</h3>
+            <p class="feature-text">
+              No generic templates. Anthropic's Claude 3.5 Sonnet inspects digital presence, executive moves, and active hiring posts to craft bespoke messages that sound human and genuine.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3 class="feature-heading">Local-First & Complete Data Privacy</h3>
+            <p class="feature-text">
+              Your proprietary prospect data and pipeline intelligence remain strictly on your infrastructure. Zero third-party telemetry, zero vendor lock-in, and native GDPR compliance.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3 class="feature-heading">Multi-Signal Dynamic Scoring</h3>
+            <p class="feature-text">
+              Multi-factor algorithmic weighting: combining public job offers, domain vitality, corporate status, and growth velocity into an actionable 0-100 propensity index.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3 class="feature-heading">Pipeline & Deal Tracking</h3>
+            <p class="feature-text">
+              Integrated commission simulator, partner deal tracking, revenue forecasting, and one-click export for fiscal compliance and partner alignment.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔌</div>
+            <h3 class="feature-heading">Seamless API & Webhook Fabric</h3>
+            <p class="feature-text">
+              Plug into Dropcontact, Hunter, Brevo, or internal CRMs with robust rate limiting and exponential backoff powered by Fastify and modern Node.js engines.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture-section" id="architecture">
+      <div class="container">
+        <div class="arch-box">
+          <div class="arch-content">
+            <span class="pill-badge">ENTERPRISE GRADE ARCHITECTURE</span>
+            <h2>How Maztrack harnesses Anthropic's Claude API</h2>
+            <p>
+              Traditional sales engagement tools fail because they blast superficial spam. Maztrack creates a multi-step agentic pipeline:
+            </p>
+            <ul class="arch-list">
+              <li><strong>Step 1: Signal Ingestion</strong> — Extract real-time company shifts from public APIs.</li>
+              <li><strong>Step 2: Semantic Synthesis</strong> — Claude 3.5 Sonnet condenses 10+ data points into an executive dossier.</li>
+              <li><strong>Step 3: Strategic Tone Matching</strong> — Adapts vocabulary to the prospect's exact sector and seniority.</li>
+              <li><strong>Step 4: Autonomous Review</strong> — Automated sanity checks ensure RGPD adherence and zero hallucinated claims.</li>
+            </ul>
+          </div>
+          <div class="arch-code-preview">
+            <div class="code-header">
+              <span>lib/claude-pipeline.js</span>
+              <span class="code-lang">JavaScript</span>
+            </div>
+            <pre><code>// Maztrack AI Intelligence Engine
+import Anthropic from '@anthropic-ai/sdk';
+
+const anthropic = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY
+});
+
+export async function synthesizeOutreach(prospect) {
+  const response = await anthropic.messages.create({
+    model: "claude-3-5-sonnet-20241022",
+    max_tokens: 1024,
+    temperature: 0.2,
+    system: "You are an elite B2B sales strategist...",
+    messages: [{
+      role: "user",
+      content: formatCompanySignals(prospect)
+    }]
+  });
+  return response.content[0].text;
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Early Access / Call to Action -->
+    <section class="cta-section" id="early-access">
+      <div class="container text-center">
+        <h2 class="cta-title">Ready to accelerate your B2B pipeline?</h2>
+        <p class="cta-subtitle">Join the exclusive beta cohort. Get instant access to the Maztrack intelligence engine.</p>
+        
+        <form class="cta-form" id="waitlist-form" onsubmit="event.preventDefault(); alert('Thank you for joining the Maztrack private beta! Check your inbox shortly.');">
+          <input type="email" placeholder="Enter your business email..." required class="cta-input">
+          <button type="submit" class="btn btn-primary btn-large">Request Access</button>
+        </form>
+        <p class="cta-micro">No credit card required · Free 14-day trial · Immediate deployment</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-col">
+        <div class="brand">MAZ<span>TRACK</span></div>
+        <p class="footer-desc">AI-First B2B Prospecting & Intelligence Platform. Designed for modern revenue teams.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#demo">Interactive Cockpit</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#about">About Maztrack</a>
+        <a href="#careers">Careers</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#gdpr">GDPR Compliance</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container flex-between">
+        <p>© 2026 Maztrack Technologies. All rights reserved.</p>
+        <p>Engineered with Claude AI & Fastify.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
