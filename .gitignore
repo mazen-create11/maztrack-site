@@ -2,3 +2,4 @@ worker/node_modules/
 worker/.wrangler/
 .env*
 .DS_Store
+.dossier/
