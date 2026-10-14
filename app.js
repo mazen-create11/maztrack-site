@@ -18,8 +18,10 @@ async function health() {
   try {
     const r = await fetch(`${API}/health`);
     const j = await r.json();
-    status.className = "status " + (j.ai ? "on" : "off");
-    status.querySelector("span").textContent = j.ai ? `api live · ${j.model}` : "api live · brief paused";
+    const live = j.ai === "ok";
+    status.className = "status " + (live ? "on" : "off");
+    const why = { no_credit: "brief paused (no API credit)", bad_key: "brief misconfigured", off: "brief off", unknown: "brief status unknown" };
+    status.querySelector("span").textContent = live ? `api live · ${j.model}` : `api live · ${why[j.ai] || "brief paused"}`;
     $("#ver").textContent = "v" + j.version;
   } catch {
     status.className = "status off";
@@ -94,9 +96,9 @@ async function run(query) {
       body: JSON.stringify({ query, lang, senderContext: $("#ctx").value }),
     });
     const j = await r.json();
-    if (r.status === 200 || (r.status === 502 && j.company)) {
+    if (r.status === 200 || ((r.status === 502 || r.status === 402) && j.company)) {
       render(j);
-      if (r.status === 502) out.insertAdjacentHTML("afterbegin", `<div class="err">${esc(j.message)}</div>`);
+      if (r.status !== 200) out.insertAdjacentHTML("afterbegin", `<div class="err">${esc(j.message)}</div>`);
     } else {
       out.innerHTML = `<div class="err">${esc(j.message || j.error || "error")}</div>`;
     }

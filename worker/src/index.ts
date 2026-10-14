@@ -72,6 +72,39 @@ function parseBody(raw: unknown): BriefRequest | null {
   return { query, lang, senderContext };
 }
 
+type AiState = "ok" | "no_credit" | "bad_key" | "off" | "unknown";
+
+/** Probe the API with a free count_tokens call, cached 10 minutes in KV. */
+async function aiState(env: Env): Promise<AiState> {
+  if (!env.ANTHROPIC_API_KEY) return "off";
+  const cached = await env.RATE.get("ai:state");
+  if (cached) return cached as AiState;
+  let state: AiState = "unknown";
+  try {
+    const r = await fetch("https://api.anthropic.com/v1/messages/count_tokens", {
+      method: "POST",
+      headers: { "x-api-key": env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "content-type": "application/json" },
+      body: JSON.stringify({ model: env.MODEL, messages: [{ role: "user", content: "ping" }] }),
+    });
+    if (r.ok) state = "ok";
+    else {
+      const t = await r.text();
+      state = r.status === 401 ? "bad_key" : /credit balance/i.test(t) ? "no_credit" : "unknown";
+    }
+  } catch {
+    state = "unknown";
+  }
+  await env.RATE.put("ai:state", state, { expirationTtl: 600 });
+  return state;
+}
+
+function classify(message: string): { status: number; error: string; text: string } {
+  if (message === "refusal") return { status: 422, error: "refused", text: "The model declined this request." };
+  if (/credit balance/i.test(message)) return { status: 402, error: "no_credit", text: "The AI brief is paused: the demo organisation has no API credit right now. Facts and score below are live." };
+  if (/401|authentication/i.test(message)) return { status: 502, error: "bad_key", text: "The AI brief is misconfigured on our side. Facts and score below are live." };
+  return { status: 502, error: "ai_unavailable", text: "The AI brief failed. Facts and score below are live." };
+}
+
 async function handleBrief(req: Request, env: Env, cors: Record<string, string>): Promise<Response> {
   if (!env.ANTHROPIC_API_KEY) return json({ error: "demo_offline", message: "The AI brief is paused. Registry lookup still works." }, 503, cors);
 
@@ -123,11 +156,13 @@ async function handleBrief(req: Request, env: Env, cors: Record<string, string>)
     );
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    const status = message === "refusal" ? 422 : 502;
+    const c = classify(message);
+    if (c.error === "no_credit") await env.RATE.put("ai:state", "no_credit", { expirationTtl: 600 });
+    const status = c.status;
     return json(
       {
-        error: message === "refusal" ? "refused" : "ai_unavailable",
-        message: message === "refusal" ? "The model declined this request." : "The AI brief failed. Facts below are still from the registry.",
+        error: c.error,
+        message: c.text,
         company,
         bodacc: { available: bodacc.available, notices: bodacc.notices.slice(0, 8) },
         scoring,
@@ -153,7 +188,7 @@ export default {
     const url = new URL(req.url);
 
     if (url.pathname === "/health") {
-      return json({ ok: true, model: env.MODEL, ai: Boolean(env.ANTHROPIC_API_KEY), version: "0.2.0" }, 200, cors);
+      return json({ ok: true, model: env.MODEL, ai: await aiState(env), version: "0.2.1" }, 200, cors);
     }
     if (url.pathname === "/lookup" && req.method === "GET") return handleLookup(url, cors);
     if (url.pathname === "/brief" && req.method === "POST") return handleBrief(req, env, cors);
