@@ -106,8 +106,6 @@ function classify(message: string): { status: number; error: string; text: strin
 }
 
 async function handleBrief(req: Request, env: Env, cors: Record<string, string>): Promise<Response> {
-  if (!env.ANTHROPIC_API_KEY) return json({ error: "demo_offline", message: "The AI brief is paused. Registry lookup still works." }, 503, cors);
-
   let body: BriefRequest | null = null;
   try {
     body = parseBody(await req.json());
@@ -116,7 +114,9 @@ async function handleBrief(req: Request, env: Env, cors: Record<string, string>)
   }
   if (!body) return json({ error: "bad_request", message: "query (2-80 chars) is required" }, 400, cors);
 
-  const quota = await checkQuota(req, env);
+  // Quota only guards the paid step. Facts and score stay free when the model is paused.
+  const state = await aiState(env);
+  const quota = state === "ok" ? await checkQuota(req, env) : ({ ok: true } as const);
   if (!quota.ok) {
     return json(
       { error: quota.reason, message: quota.reason === "ip_quota" ? "Demo limit: 6 briefs per day per connection." : "Today's demo budget is spent. Back tomorrow." },
@@ -133,9 +133,25 @@ async function handleBrief(req: Request, env: Env, cors: Record<string, string>)
   const bodacc = await fetchBodacc(company.siren);
   const scoring = scoreCompany(company, bodacc);
 
+  if (state !== "ok") {
+    const c = classify(state === "no_credit" ? "credit balance" : state === "bad_key" ? "401" : "off");
+    return json(
+      {
+        error: c.error,
+        message: c.text,
+        company,
+        bodacc: { available: bodacc.available, notices: bodacc.notices.slice(0, 8) },
+        scoring,
+        meta: { ms: Date.now() - t0, otherMatches: candidates.slice(1), ai: state },
+      },
+      c.status,
+      cors,
+    );
+  }
+
   try {
     const ai = await writeBrief({
-      apiKey: env.ANTHROPIC_API_KEY,
+      apiKey: env.ANTHROPIC_API_KEY as string,
       model: env.MODEL,
       company,
       bodacc,

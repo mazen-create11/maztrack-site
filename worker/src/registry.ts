@@ -61,20 +61,33 @@ function latestFinances(finances: any): Company["latestRevenue"] {
   return { year, revenue: num(row.ca ?? row.chiffre_affaires), netResult: num(row.resultat_net) };
 }
 
+/** "LE SLIP FRANCAIS (LE SLIP FRANCAIS) (LSF)" -> "LE SLIP FRANCAIS (LSF)". */
+export function cleanName(raw: string): string {
+  let name = String(raw || "").trim();
+  const m = name.match(/^(.+?)\s+\((.+?)\)(.*)$/);
+  if (m && m[1].trim().toUpperCase() === m[2].trim().toUpperCase()) name = `${m[1].trim()}${m[3]}`.trim();
+  return name.replace(/\s{2,}/g, " ");
+}
+
+const NON_EMPLOYER_BANDS = new Set(["NN", "00"]);
+
 export function mapCompany(r: any): Company {
   const siege = r.siege || {};
   const comp = r.complements || {};
   const cp: string | null = siege.code_postal || null;
   const emp = siege.caractere_employeur ?? r.caractere_employeur;
+  const band: string | null = r.tranche_effectif_salarie || null;
+  // The registry often leaves caractere_employeur empty; a headcount band above zero is proof enough.
+  const isEmployer = emp === "O" || emp === true || (band != null && !NON_EMPLOYER_BANDS.has(band));
   return {
     siren: r.siren,
-    name: r.nom_complet || r.nom_raison_sociale || "",
+    name: cleanName(r.nom_complet || r.nom_raison_sociale || ""),
     naf: r.activite_principale || null,
     nafSection: r.section_activite_principale || null,
     createdAt: r.date_creation || null,
-    headcountBand: r.tranche_effectif_salarie || null,
+    headcountBand: band,
     legalForm: r.nature_juridique || null,
-    isEmployer: emp === "O" || emp === true,
+    isEmployer,
     isQualiopi: !!comp.est_qualiopi,
     isTrainingOrg: !!comp.est_organisme_formation,
     isRge: !!comp.est_rge,

@@ -4,122 +4,117 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maztrack Radar: who to call today, from French public registries</title>
-  <meta name="description" content="Maztrack reads the official French company registry and BODACC legal notices, scores each company, and writes a sourced brief and outreach email with Claude. Try it on any French company.">
+  <meta name="description" content="Maztrack reads the official French company registry and BODACC legal notices, scores each company with explicit rules, and has Claude write a sourced brief and first email. Try it on any French company.">
   <link rel="canonical" href="https://maztrack.tech/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0b0f14">
   <meta property="og:title" content="Maztrack Radar">
-  <meta property="og:description" content="French company registry + BODACC + Claude: a sourced sales brief in 20 seconds. Public demo.">
+  <meta property="og:description" content="French company registry + BODACC + Claude: a sourced sales brief you can defend. Public demo.">
   <meta property="og:url" content="https://maztrack.tech/">
+  <meta property="og:image" content="https://maztrack.tech/og.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip" href="#radar">Skip to the demo</a>
   <header class="top">
     <div class="wrap">
-      <a href="#" class="brand"><i></i>MAZTRACK</a>
-      <nav class="nav">
+      <a href="#" class="brand" aria-label="Maztrack home"><i aria-hidden="true"></i>MAZTRACK</a>
+      <nav class="nav" aria-label="Sections">
         <a href="#radar">Radar</a>
-        <a href="#how">How it works</a>
+        <a href="#how">Pipeline</a>
         <a href="#engine">Engine</a>
         <a href="#pricing">Pricing</a>
         <a href="#changelog">Changelog</a>
         <a href="#company">Company</a>
       </nav>
-      <div class="status" id="status"><b></b><span>checking api</span></div>
+      <div class="status" id="status" aria-live="polite"><b aria-hidden="true"></b><span>checking api</span></div>
     </div>
   </header>
 
   <main>
-    <section class="hero" style="border-top:0">
+    <section class="hero" aria-labelledby="h1">
       <div class="wrap">
-        <h1>Type a French company. Get the facts, a score and a first email <em>you can defend</em>.</h1>
-        <p class="lead">Maztrack reads the official company registry and BODACC legal notices, scores the account with explicit rules, then asks Claude to write a short brief and an outreach email that only states what the records show.</p>
-        <div class="facts">
-          <span><b>Sources</b> recherche-entreprises.api.gouv.fr · BODACC</span>
-          <span><b>Model</b> Claude Opus 5.5, structured output</span>
-          <span><b>Stores</b> nothing about your queries</span>
-        </div>
+        <h1 id="h1">Type a French company. Get the facts, a score and a first email <em>you can defend</em>.</h1>
+        <p class="lead">Maztrack reads the official company registry and BODACC legal notices, scores the account with explicit rules, then asks Claude for a short brief and an outreach email that only states what the records show.</p>
+        <dl class="facts-line">
+          <div><dt>Sources</dt><dd>recherche-entreprises.api.gouv.fr · BODACC</dd></div>
+          <div><dt>Model</dt><dd>Claude Opus 5.5, structured output</dd></div>
+          <div><dt>Stores</dt><dd>nothing about your queries</dd></div>
+        </dl>
       </div>
     </section>
 
     <div class="wrap">
       <div class="radar" id="radar">
         <div class="radar-bar">
-          <div class="dots"><i></i><i></i><i></i></div>
-          <span>maztrack-radar · public demo · 6 briefs per day per connection</span>
-          <span id="ver"></span>
+          <span class="radar-name">maztrack-radar</span>
+          <span class="radar-quota">public demo · 6 briefs a day per connection</span>
+          <span id="ver" class="radar-ver"></span>
         </div>
-        <form id="f">
-          <div class="field">
+        <form id="f" novalidate>
+          <div class="field grow">
             <label for="q">Company name or SIREN</label>
-            <input id="q" name="q" type="text" placeholder="e.g. Decathlon, 552 032 534, Boulangerie Dupont Lyon" maxlength="80" autocomplete="off" required>
+            <input id="q" name="q" type="text" placeholder="Decathlon · 552 032 534 · Boulangerie Dupont Lyon" maxlength="80" autocomplete="off" spellcheck="false" required>
           </div>
           <button class="btn" id="go" type="submit">Run radar</button>
-          <div class="row2">
-            <div class="field">
-              <label for="ctx">Who is writing (used for the email)</label>
-              <input id="ctx" name="ctx" type="text" maxlength="240" placeholder="an independent consultant offering a free 30-minute diagnostic on sales automation for small businesses">
-            </div>
-            <div class="seg" id="lang">
-              <button type="button" data-lang="fr" class="on">Brief in FR</button>
-              <button type="button" data-lang="en">in EN</button>
-            </div>
+          <div class="field grow">
+            <label for="ctx">Who is writing, for the email</label>
+            <input id="ctx" name="ctx" type="text" maxlength="240" placeholder="an independent consultant offering a free 30-minute diagnostic on sales automation for small businesses">
+          </div>
+          <div class="seg" id="lang" role="group" aria-label="Brief language">
+            <button type="button" data-lang="fr" class="on" aria-pressed="true">Brief in FR</button>
+            <button type="button" data-lang="en" aria-pressed="false">in EN</button>
           </div>
         </form>
         <div class="hint">
-          <span>Try:</span>
+          <span>Try</span>
+          <a href="#" data-try="539130195">Le Slip Français</a>
           <a href="#" data-try="Michel et Augustin">Michel et Augustin</a>
-          <a href="#" data-try="Le Slip Français">Le Slip Français</a>
-          <a href="#" data-try="Alan">Alan (insurance)</a>
+          <a href="#" data-try="Alan">Alan</a>
           <a href="#" data-try="552032534">552 032 534</a>
-          <span style="margin-left:auto">Only active companies in the French registry.</span>
+          <span class="hint-right">Active companies in the French registry only.</span>
         </div>
-        <div class="out" id="out"></div>
+        <div class="out" id="out" aria-live="polite"></div>
       </div>
     </div>
 
-    <section id="how">
+    <section id="how" aria-labelledby="h-how">
       <div class="wrap">
-        <h2>How a brief is built</h2>
-        <p class="sub">Four steps, each one inspectable. The model never sees anything that is not in a public record, and it is instructed to say when a fact is missing rather than fill it in.</p>
-        <div class="steps">
-          <div class="step">
-            <div class="n">01 · Registry</div>
-            <h3>Identity and structure</h3>
-            <p>SIREN, NAF activity, creation date, INSEE headcount band, employer status, open establishments, executive on record, latest filed accounts, labels (Qualiopi, RGE, ESS).</p>
-            <a href="https://recherche-entreprises.api.gouv.fr/docs/" target="_blank" rel="noopener">api.gouv.fr ↗</a>
-          </div>
-          <div class="step">
-            <div class="n">02 · BODACC</div>
-            <h3>Legal notices</h3>
-            <p>Sales and transfers (a new decision-maker), recent modifications, filed accounts, and collective procedures, which exclude the company from any outreach.</p>
-            <a href="https://bodacc-datadila.opendatasoft.com/" target="_blank" rel="noopener">bodacc.fr open data ↗</a>
-          </div>
-          <div class="step">
-            <div class="n">03 · Score</div>
-            <h3>Deterministic rules</h3>
-            <p>0 to 100, same weights as the local engine: employer +18, under 24 months +15, recent sale +12, modification +6, several sites +6. Qualiopi caps at 25. Each point is listed with its reason.</p>
-            <a href="https://github.com/mazen-create11/maztrack-site/blob/main/worker/src/scoring.ts" target="_blank" rel="noopener">scoring.ts ↗</a>
-          </div>
-          <div class="step">
-            <div class="n">04 · Claude</div>
-            <h3>Brief and email</h3>
-            <p>Claude Opus 5.5 receives the facts and the score, answers in a fixed JSON schema: summary, angle, readings, email, cautions. Prompt cached, effort low, about 20 seconds.</p>
-            <a href="https://github.com/mazen-create11/maztrack-site/blob/main/worker/src/brief.ts" target="_blank" rel="noopener">brief.ts ↗</a>
-          </div>
-        </div>
+        <h2 id="h-how">The pipeline, step by step</h2>
+        <p class="sub">Each step is inspectable. The model never sees anything that is not in a public record, and it is told to say when a fact is missing rather than fill it in.</p>
+        <ol class="pipeline">
+          <li>
+            <div class="pl-head"><span class="pl-n">1</span><h3>Registry</h3><a href="https://recherche-entreprises.api.gouv.fr/docs/" target="_blank" rel="noopener">api.gouv.fr ↗</a></div>
+            <p>SIREN, NAF activity, creation date, INSEE headcount band, employer status, open establishments, officer on record, latest filed accounts, labels (Qualiopi, RGE, ESS). One request, no key, official data.</p>
+          </li>
+          <li>
+            <div class="pl-head"><span class="pl-n">2</span><h3>BODACC</h3><a href="https://bodacc-datadila.opendatasoft.com/" target="_blank" rel="noopener">bodacc.fr open data ↗</a></div>
+            <p>Sales and transfers (a new decision-maker), recent modifications, filed accounts, and collective procedures, which exclude the company from any outreach at all.</p>
+          </li>
+          <li>
+            <div class="pl-head"><span class="pl-n">3</span><h3>Score</h3><a href="https://github.com/mazen-create11/maztrack-site/blob/main/worker/src/scoring.ts" target="_blank" rel="noopener">scoring.ts ↗</a></div>
+            <p>0 to 100 with the engine's default weights: employer <code>+18</code>, under 24 months <code>+15</code>, recent sale <code>+12</code>, modification <code>+6</code>, several sites <code>+6</code>. Qualiopi caps at 25. Every point is listed with its reason, nothing is hidden in a model.</p>
+          </li>
+          <li>
+            <div class="pl-head"><span class="pl-n">4</span><h3>Claude</h3><a href="https://github.com/mazen-create11/maztrack-site/blob/main/worker/src/brief.ts" target="_blank" rel="noopener">brief.ts ↗</a></div>
+            <p>Claude Opus 5.5 receives the facts and the score and answers in a fixed JSON schema: summary, angle, readings, email, cautions. System prompt cached, effort low, about 20 seconds. A refusal or a parse failure returns the facts alone, never a made-up brief.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <section id="engine">
+    <section id="engine" aria-labelledby="h-engine">
       <div class="wrap">
-        <h2>The engine behind the demo</h2>
+        <h2 id="h-engine">The engine behind the demo</h2>
         <p class="sub">Radar is the public face of a local prospecting engine in use since June 2026. The engine does what the demo cannot: it sources whole segments, keeps the data on the user's machine, and tracks what each lead becomes.</p>
         <div class="two">
-          <ul>
+          <ul class="plain">
             <li><b>Sourcing by segment.</b> NAF codes × departments, active companies only, paged through the registry at the official rate limit.</li>
-            <li><b>Scoring with hiring signals.</b> Same rules as Radar, plus France Travail job postings (+25 to +35 when a company is recruiting now).</li>
+            <li><b>Scoring with hiring signals.</b> Same rules as Radar, plus France Travail job postings: +25 to +35 when a company is recruiting now.</li>
             <li><b>GDPR exclusions by default.</b> Non-disclosable records, sole traders, companies over 250 staff and anything under collective procedure never enter the pipeline.</li>
             <li><b>Local-first.</b> Node 22+, SQLite built into Node, no external database, no telemetry. Runs as a macOS app or from the terminal.</li>
             <li><b>Deal ledger.</b> Timestamped proof of who introduced which account, commission tiers, reconciliation when a partner under-reports.</li>
@@ -142,59 +137,49 @@
       </div>
     </section>
 
-    <section id="pricing">
+    <section id="pricing" aria-labelledby="h-pricing">
       <div class="wrap">
-        <h2>Pricing</h2>
+        <h2 id="h-pricing">Pricing</h2>
         <p class="sub">Radar is free while we measure what a brief is worth to the people who use it. Paid plans open with version 1.</p>
-        <div class="plans">
-          <div class="plan now">
-            <div class="tag">Available now</div>
-            <h3>Radar, public demo</h3>
-            <div class="price">0 €</div>
-            <p>6 briefs per day per connection. French and English. No account.</p>
-          </div>
-          <div class="plan">
-            <div class="tag">Early access</div>
-            <h3>Engine, local</h3>
-            <div class="price">0 € <small>during beta</small></div>
-            <p>The full engine on your Mac: sourcing by segment, hiring signals, exports, deal ledger.</p>
-            <ul><li>Set-up call included</li><li>You bring your own Anthropic key</li></ul>
-          </div>
-          <div class="plan">
-            <div class="tag">Planned, Q1 2027</div>
-            <h3>Pro</h3>
-            <div class="price">49 € <small>per seat per month, target</small></div>
-            <p>Hosted Radar without quotas, team workspace, CRM export, monthly re-scoring of your accounts.</p>
-          </div>
-        </div>
+        <table class="plans">
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Radar, public demo</th><th scope="col">Engine, local</th><th scope="col">Pro, hosted</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Status</th><td><span class="tag on">available</span></td><td><span class="tag">early access</span></td><td><span class="tag">planned Q1 2027</span></td></tr>
+            <tr><th scope="row">Price</th><td class="num">0 €</td><td class="num">0 € <small>during beta</small></td><td class="num">49 € <small>per seat, monthly, target</small></td></tr>
+            <tr><th scope="row">Scope</th><td>6 briefs a day per connection, FR and EN, no account</td><td>Full engine on your Mac: segments, hiring signals, exports, deal ledger</td><td>Radar without quotas, team workspace, CRM export, monthly re-scoring</td></tr>
+            <tr><th scope="row">Needs</th><td>Nothing</td><td>Your own Anthropic key, a set-up call</td><td>A team of 2 to 10</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <section id="changelog">
+    <section id="changelog" aria-labelledby="h-log">
       <div class="wrap">
-        <h2>Changelog</h2>
+        <h2 id="h-log">Changelog</h2>
         <p class="sub">Dates are real. The repository history is public.</p>
         <ul class="log">
-          <li><time>2026-10-14</time><span><b>Radar public demo.</b> Cloudflare Worker (registry + BODACC + scoring + Claude Opus 5.5 structured output), daily quotas, this site. Source in <code>worker/</code>.</span></li>
-          <li><time>2026-10-08</time><span><b>maztrack.tech</b> registered. Claude Console organisation created for the product.</span></li>
-          <li><time>2026-07-01</time><span><b>Engine 0.1.1.</b> Deal ledger with commission tiers, editable ICP (segments and weights), XLSX export, macOS app bundle.</span></li>
-          <li><time>2026-06-30</time><span><b>Engine 0.1.0.</b> Local sourcing from the registry, BODACC signals, 0 to 100 scoring, GDPR exclusions, dark cockpit on localhost:4747. First real prospect lists delivered to a consulting partner.</span></li>
+          <li><time datetime="2026-10-14">14 Oct 2026</time><span><b>Radar public demo.</b> Cloudflare Worker (registry + BODACC + scoring + Claude Opus 5.5 structured output), daily quotas, example mode when generation is paused, this site. Source in <code>worker/</code>.</span></li>
+          <li><time datetime="2026-10-08">08 Oct 2026</time><span><b>maztrack.tech</b> registered. Claude Console organisation created for the product.</span></li>
+          <li><time datetime="2026-07-01">01 Jul 2026</time><span><b>Engine 0.1.1.</b> Deal ledger with commission tiers, editable ICP (segments and weights), XLSX export, macOS app bundle.</span></li>
+          <li><time datetime="2026-06-30">30 Jun 2026</time><span><b>Engine 0.1.0.</b> Local sourcing from the registry, BODACC signals, 0 to 100 scoring, GDPR exclusions, dark cockpit on localhost:4747. First prospect lists delivered to a consulting partner.</span></li>
         </ul>
       </div>
     </section>
 
-    <section id="company" class="about">
+    <section id="company" class="about" aria-labelledby="h-co">
       <div class="wrap">
-        <h2>Company</h2>
+        <h2 id="h-co">Company</h2>
         <p>Maztrack is built in Aix-en-Provence by Mazen Chaban, a solo founder working as a registered sole proprietor since June 2026. It started as the tool behind an introducer business: finding small companies likely to buy training and consulting, then handing them to a partner firm. The demo above is that same pipeline, opened to anyone.</p>
         <p>No outside funding. Costs today are the Anthropic API and two domains. The next step is a hosted version for small sales teams in France, where public registries are rich and under-used.</p>
-        <div class="id">
-          <b>Legal entity</b><span>Mazen Chaban, entrepreneur individuel · SIREN 107 021 768 · APE 62.01Z</span>
-          <b>Since</b><span>30 June 2026</span>
-          <b>Contact</b><span><a href="mailto:contact@maztrack.tech">contact@maztrack.tech</a></span>
-          <b>Code</b><span><a href="https://github.com/mazen-create11/maztrack-site" target="_blank" rel="noopener">github.com/mazen-create11/maztrack-site</a></span>
-          <b>Founder</b><span><a href="https://www.linkedin.com/in/mazen-chaban" target="_blank" rel="noopener">linkedin.com/in/mazen-chaban</a></span>
-        </div>
+        <dl class="id">
+          <dt>Legal entity</dt><dd>Mazen Chaban, entrepreneur individuel · SIREN 107 021 768 · APE 62.01Z</dd>
+          <dt>Since</dt><dd>30 June 2026</dd>
+          <dt>Contact</dt><dd><a href="mailto:contact@maztrack.tech">contact@maztrack.tech</a></dd>
+          <dt>Code</dt><dd><a href="https://github.com/mazen-create11/maztrack-site" target="_blank" rel="noopener">github.com/mazen-create11/maztrack-site</a></dd>
+          <dt>Founder</dt><dd><a href="https://www.linkedin.com/in/mazen-chaban" target="_blank" rel="noopener">linkedin.com/in/mazen-chaban</a></dd>
+        </dl>
       </div>
     </section>
   </main>

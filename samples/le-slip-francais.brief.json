@@ -1,0 +1,48 @@
+{
+  "siren": "539130195",
+  "generatedAt": "2026-10-14",
+  "author": "Written by Claude from the records in le-slip-francais.facts.json, same schema and rules as the live pipeline (worker/src/brief.ts). Shown while live generation is paused on the public demo.",
+  "senderContext": "an independent consultant offering a free 30-minute diagnostic on sales automation and AI for small businesses",
+  "fr": {
+    "summary": "Le Slip Français est un vendeur à distance de textile basé à Paris 10e, créé en 2012, 50 à 99 salariés, quatre établissements ouverts. Les comptes 2024 publiés affichent 20,3 M€ de chiffre d'affaires pour une perte nette de 1,5 M€. Le BODACC montre une cession enregistrée en décembre 2025, puis deux modifications publiées en août et septembre 2026.",
+    "angle": "Une cession fin 2025 suivie de deux modifications en 2026 signale une gouvernance en mouvement : c'est le moment où une direction réexamine ses outils, à condition de l'aborder sur la rentabilité, pas sur la croissance.",
+    "readings": [
+      "Perte nette de 1,5 M€ sur 20,3 M€ de chiffre d'affaires en 2024 : l'argument qui porte est un coût ou un temps mesurable en moins, pas un gain de chiffre hypothétique.",
+      "Quatre établissements ouverts pour un vendeur à distance : il y a probablement des boutiques physiques, donc des commandes, du stock et des retours à réconcilier entre canaux.",
+      "Cession publiée le 12/12/2025, modifications les 23/08 et 22/09/2026 : la nature exacte (dirigeant, capital, siège) n'est pas dans les données, la lire sur bodacc.fr avant d'en parler.",
+      "Dirigeante inscrite au registre : Virginie Birade, administratrice. Le décideur opérationnel peut être quelqu'un d'autre, ne pas le supposer.",
+      "Score 30/100 avec les règles de la démo : employeur, un mouvement récent, plusieurs sites. Sans le signal recrutement, l'entreprise reste tiède ; le contexte de gouvernance pèse plus que le score."
+    ],
+    "email": {
+      "subject": "Vos flux entre boutiques et site après les changements de 2026",
+      "body": "Bonjour Madame Birade,\n\nLe registre et le BODACC montrent, pour Le Slip Français, une cession enregistrée en décembre 2025 puis deux modifications publiées en août et septembre 2026, avec quatre établissements ouverts et un résultat 2024 négatif de 1,5 M€ pour 20,3 M€ de chiffre d'affaires.\n\nDans ce type de période, les équipes passent du temps à réconcilier à la main commandes, stock et retours entre boutiques et site. Je travaille avec des directions de PME sur l'automatisation de ces tâches, sans changer d'outils.\n\nJe vous propose un diagnostic de 30 minutes, sans engagement, pour identifier les deux ou trois opérations qui coûtent le plus de temps chaque semaine. Si ce n'est pas le moment, un simple non me suffit.\n\nCordialement,\n[Nom de l'expéditeur]"
+    },
+    "cautions": [
+      "La perte 2024 est publique, la situation 2025-2026 ne l'est pas encore : ne pas présenter l'entreprise comme en difficulté.",
+      "Le sens des modifications BODACC n'est pas dans les données : le vérifier sur bodacc.fr avant tout appel.",
+      "Aucune donnée sur le recrutement ni sur les outils en place : les besoins évoqués dans l'e-mail sont des hypothèses à confirmer de vive voix.",
+      "La convention collective 1483 (commerce de détail habillement) confirme l'activité de boutique, pas la part du chiffre d'affaires qu'elle représente."
+    ]
+  },
+  "en": {
+    "summary": "Le Slip Français is a Paris-based textile e-retailer founded in 2012, 50 to 99 staff, four open establishments. Published 2024 accounts show €20.3M in revenue and a €1.5M net loss. BODACC records a sale or transfer in December 2025, then two modifications published in August and September 2026.",
+    "angle": "A transfer in late 2025 followed by two modifications in 2026 points to governance in motion: the moment a leadership team reviews its tools, provided the conversation is about profitability, not growth.",
+    "readings": [
+      "A €1.5M net loss on €20.3M revenue in 2024: the argument that lands is a measurable cost or time saved, not a hypothetical revenue gain.",
+      "Four open establishments for a distance seller: physical shops are likely, so orders, stock and returns have to be reconciled across channels.",
+      "Transfer published 12 Dec 2025, modifications on 23 Aug and 22 Sep 2026: their exact nature (officer, capital, registered office) is not in the data; read it on bodacc.fr before raising it.",
+      "Officer on record: Virginie Birade, board member. The operational decision-maker may be someone else; do not assume.",
+      "Score 30/100 under the demo rules: employer, one recent movement, several sites. Without the hiring signal the account stays lukewarm; the governance context matters more than the score."
+    ],
+    "email": {
+      "subject": "Your shop-to-site flows after the 2026 changes",
+      "body": "Dear Ms Birade,\n\nThe registry and BODACC show, for Le Slip Français, a transfer recorded in December 2025 followed by two modifications published in August and September 2026, with four open establishments and a 2024 net result of minus €1.5M on €20.3M revenue.\n\nIn periods like this, teams spend time reconciling orders, stock and returns by hand between shops and the website. I work with SME leadership on automating those tasks without changing tools.\n\nI'd like to offer a 30-minute diagnostic, no commitment, to identify the two or three operations that cost the most time each week. If the timing is wrong, a simple no is enough.\n\nKind regards,\n[Sender name]"
+    },
+    "cautions": [
+      "The 2024 loss is public; the 2025-2026 situation is not yet. Do not present the company as struggling.",
+      "The meaning of the BODACC modifications is not in the data: check bodacc.fr before any call.",
+      "No data on hiring or on the tools in place: the needs mentioned in the email are hypotheses to confirm by phone.",
+      "Collective agreement 1483 (clothing retail) confirms shop activity, not the share of revenue it represents."
+    ]
+  }
+}

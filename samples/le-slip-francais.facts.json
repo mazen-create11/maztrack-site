@@ -1,0 +1,112 @@
+{
+  "company": {
+    "siren": "539130195",
+    "name": "LE SLIP FRANCAIS (LSF)",
+    "naf": "47.91B",
+    "nafSection": "G",
+    "createdAt": "2012-01-01",
+    "headcountBand": "21",
+    "legalForm": "5599",
+    "isEmployer": true,
+    "isQualiopi": false,
+    "isTrainingOrg": false,
+    "isRge": false,
+    "isEss": false,
+    "isSoleTrader": false,
+    "nonDisclosable": false,
+    "city": "PARIS",
+    "postalCode": "75010",
+    "department": "75",
+    "openSites": 4,
+    "executive": {
+      "lastName": "BIRADE",
+      "firstName": "VIRGINIE",
+      "role": "Administrateur"
+    },
+    "latestRevenue": {
+      "year": "2024",
+      "revenue": 20274568,
+      "netResult": -1501905
+    },
+    "idcc": [
+      "1483"
+    ]
+  },
+  "bodacc": {
+    "available": true,
+    "notices": [
+      {
+        "date": "2026-09-22",
+        "family": "Modifications diverses",
+        "type": "Avis initial"
+      },
+      {
+        "date": "2026-09-08",
+        "family": "Dépôts des comptes",
+        "type": "Avis initial"
+      },
+      {
+        "date": "2026-08-23",
+        "family": "Modifications diverses",
+        "type": "Avis initial"
+      },
+      {
+        "date": "2026-06-03",
+        "family": "Dépôts des comptes",
+        "type": "Avis initial"
+      },
+      {
+        "date": "2025-12-12",
+        "family": "Ventes et cessions",
+        "type": "Avis initial"
+      },
+      {
+        "date": "2025-08-03",
+        "family": "Modifications diverses",
+        "type": "Avis initial"
+      },
+      {
+        "date": "2024-09-02",
+        "family": "Dépôts des comptes",
+        "type": "Avis initial"
+      },
+      {
+        "date": "2024-08-04",
+        "family": "Modifications diverses",
+        "type": "Avis initial"
+      }
+    ]
+  },
+  "scoring": {
+    "score": 30,
+    "excluded": false,
+    "exclusionReason": null,
+    "signals": [
+      {
+        "key": "employeur",
+        "points": 18,
+        "detail": "employeur : cotise OPCO, formation finançable"
+      },
+      {
+        "key": "age",
+        "points": 0,
+        "detail": "créée il y a 15 ans"
+      },
+      {
+        "key": "capital",
+        "points": 6,
+        "detail": "modification publiée le 2026-09-22 (BODACC)"
+      },
+      {
+        "key": "expansion",
+        "points": 6,
+        "detail": "4 établissements ouverts"
+      },
+      {
+        "key": "recrutement",
+        "points": 0,
+        "detail": "signal recrutement (France Travail) non branché dans la démo publique"
+      }
+    ]
+  }
+}
