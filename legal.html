@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maztrack : mentions légales et données</title>
+  <meta name="robots" content="noindex">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legal { max-width: 720px; padding: 48px 20px 80px; margin: 0 auto; }
+    .legal h1 { font-size: 26px; margin-bottom: 24px; }
+    .legal h2 { font-size: 17px; margin: 28px 0 8px; }
+    .legal p, .legal li { color: var(--muted); font-size: 15px; }
+    .legal ul { padding-left: 18px; }
+  </style>
+</head>
+<body>
+  <header class="top"><div class="wrap"><a href="index.html" class="brand"><i></i>MAZTRACK</a><span class="status"><span>← retour</span></span></div></header>
+  <main class="legal">
+    <h1>Mentions légales et traitement des données</h1>
+
+    <h2>Éditeur</h2>
+    <p>Mazen Chaban, entrepreneur individuel, immatriculé au Registre national des entreprises depuis le 30 juin 2026. SIREN 107 021 768, code APE 62.01Z (programmation informatique). Siège : 13090 Aix-en-Provence, France. Adresse postale complète communiquée sur demande à <a href="mailto:contact@maztrack.tech">contact@maztrack.tech</a>. Dispensé d'immatriculation au RCS et de TVA (article 293 B du CGI).</p>
+
+    <h2>Hébergement</h2>
+    <ul>
+      <li>Site : GitHub Pages, GitHub Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</li>
+      <li>API de démonstration (« Radar ») : Cloudflare Workers, Cloudflare Inc., 101 Townsend Street, San Francisco, CA 94107, États-Unis. Exécution sur le réseau Cloudflare, y compris en Union européenne.</li>
+      <li>Génération du brief : Anthropic PBC, API Claude. Les données transmises sont des informations publiques d'entreprises, jamais de données saisies par l'utilisateur hors du champ « qui écrit ».</li>
+    </ul>
+
+    <h2>Ce que Radar fait de vos requêtes</h2>
+    <ul>
+      <li>Le nom ou le SIREN saisi est transmis à l'API publique recherche-entreprises.api.gouv.fr (DINUM) puis à l'API BODACC (DILA, via Opendatasoft). Ces services ont leurs propres conditions.</li>
+      <li>Les faits obtenus sont envoyés à l'API Anthropic pour rédiger le brief. Anthropic ne les utilise pas pour entraîner ses modèles dans le cadre de l'API.</li>
+      <li>Aucune requête, aucun brief et aucun e-mail généré n'est enregistré par Maztrack.</li>
+      <li>Limitation d'usage : un compteur par adresse IP, conservé sous forme de hachage SHA-256 tronqué, expire automatiquement après 25 heures. Il n'est associé à aucune autre donnée.</li>
+      <li>Aucun cookie, aucun traceur, aucune mesure d'audience sur ce site.</li>
+    </ul>
+
+    <h2>Données des entreprises affichées</h2>
+    <p>Les informations affichées (dénomination, SIREN, activité, dirigeant, comptes publiés, annonces légales) proviennent de registres publics français et sont reproduites telles quelles. Les dirigeants personnes physiques sont nommés tels qu'ils figurent au registre, conformément à l'ouverture des données du RNE. Toute personne concernée peut demander la non-diffusion de ses données auprès de l'INSEE ; Maztrack reflète ce statut à la requête suivante.</p>
+
+    <h2>Usage des e-mails générés</h2>
+    <p>L'e-mail proposé est un brouillon. Son envoi relève de la responsabilité de l'utilisateur, qui doit respecter l'article L.34-5 du Code des postes et des communications électroniques (prospection B2B fondée sur l'intérêt légitime, lien avec la fonction du destinataire, possibilité de s'opposer).</p>
+
+    <h2>Contact et droits</h2>
+    <p>Pour toute question, ou pour exercer vos droits d'accès, de rectification ou d'opposition : <a href="mailto:contact@maztrack.tech">contact@maztrack.tech</a>. Réponse sous 30 jours.</p>
+  </main>
+</body>
+</html>

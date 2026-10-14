@@ -1,0 +1,17 @@
+name = "maztrack-radar"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ALLOWED_ORIGINS = "https://maztrack.tech,https://www.maztrack.tech,http://localhost:4747,http://127.0.0.1:8080,http://localhost:8080"
+DAILY_CAP = "120"
+IP_CAP = "6"
+MODEL = "claude-opus-5-5"
+
+[[kv_namespaces]]
+binding = "RATE"
+id = "68609f73d16f43789751aed1c5fc2ed4"
+
+[observability]
+enabled = true
